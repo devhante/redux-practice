@@ -19,9 +19,9 @@ export const toggleTodo = (id: number) => ({
   id
 });
 
-type ActionType = ReturnType<typeof addTodo> | ReturnType<typeof toggleTodo>;
+type TodosAction = ReturnType<typeof addTodo> | ReturnType<typeof toggleTodo>;
 
-type StateType = {
+export type TodosState = {
   id: number;
   text: string;
   done: boolean;
@@ -30,7 +30,7 @@ type StateType = {
 /* 초기 상태 선언 */
 // 리듀서의 초기 상태는 꼭 객체 타입일 필요는 없습니다.
 // 배열이어도 되고, 원시 타입(숫자, 문자열, 불리언)이어도 상관 없습니다.
-const initialState: StateType[] = [
+const initialState: TodosState[] = [
   /* 우리는 다음과 같이 구성된 객체를 이 배열 안에 넣을 것입니다.
   {
     id: 1,
@@ -41,8 +41,8 @@ const initialState: StateType[] = [
 ];
 
 export default function todos(
-  state: StateType[] = initialState,
-  action: ActionType
+  state: TodosState[] = initialState,
+  action: TodosAction
 ) {
   switch (action.type) {
     case ADD_TODO:

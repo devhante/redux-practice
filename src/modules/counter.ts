@@ -11,18 +11,18 @@ export const setDiff = (diff: number) => ({ type: SET_DIFF, diff });
 export const increase = () => ({ type: INCREASE });
 export const decrease = () => ({ type: DECREASE });
 
-type ActionType =
+type CounterAction =
   | ReturnType<typeof setDiff>
   | ReturnType<typeof increase>
   | ReturnType<typeof decrease>;
 
-type StateType = {
+type CounterState = {
   number: number;
   diff: number;
 };
 
 /* 초기 상태 선언 */
-const initialState: StateType = {
+const initialState: CounterState = {
   number: 0,
   diff: 1
 };
@@ -30,8 +30,8 @@ const initialState: StateType = {
 /* 리듀서 선언 */
 // 리듀서는 export default로 내보내 주세요.
 export default function counter(
-  state: StateType = initialState,
-  action: ActionType
+  state: CounterState = initialState,
+  action: CounterAction
 ) {
   switch (action.type) {
     case SET_DIFF:
